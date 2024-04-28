@@ -26,8 +26,8 @@
 
     <div class="card">
         <div class="card-header">
-            @foreach ($question->subtests as $question)
-                <p>Subtest Name: {{ $question->name }}</p>
+            @foreach ($subtests as $subtest)
+                <p>Subtest Name: {{ $subtest->name }}</p>
                 <!-- Tampilkan atribut lain dari subtes sesuai kebutuhan -->
             @endforeach
         </div>
@@ -41,11 +41,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($questions as $question)
+                    @foreach ($subtests->questions as $question)
                         <tr>
                             <td>{{ $question->id }}</td>
                             <td>{{ $question->text }}</td>
-                            <td>{{ $question->image_path }}</td>
+                            {{-- <td>{{ $question->image_path }}</td> --}}
                             <td>
                                 <!-- Tambahkan link untuk show, edit, dan delete -->
                                 <a href="{{ route('exam.show', $exam->id) }}" class="btn btn-info btn-sm">Show</a>

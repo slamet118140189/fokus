@@ -26,7 +26,7 @@
 
     <div class="card">
         <div class="card-header">
-            @foreach ($question->subtests as $question)
+            @foreach ($subtests as $question)
                 <p>Subtest Name: {{ $question->name }}</p>
                 <!-- Tampilkan atribut lain dari subtes sesuai kebutuhan -->
             @endforeach

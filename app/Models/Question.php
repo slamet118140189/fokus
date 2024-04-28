@@ -14,7 +14,7 @@ class Question extends Model
         'image_path',
     ];
 
-    public function subtests(){
+    public function subtest(){
         return $this->belongsTo(Subtest::class);
     }
 

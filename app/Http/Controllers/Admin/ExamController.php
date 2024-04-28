@@ -58,6 +58,11 @@ class ExamController extends Controller
     public function show(string $id)
     {
         $exam = Exam::findOrFail($id);
+        $exam->load(
+            [
+                'subtests'
+            ]
+        );
         return view('pages.admin.exam.show', compact('exam'));
     }
 

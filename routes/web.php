@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\Exam\QuestionController as ExamQuestionController;
+use App\Http\Controllers\Admin\Exam\SubtestController;
 use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\ParticipantController;
 use App\Http\Controllers\Admin\QuestionController;
@@ -15,8 +17,16 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('exam', ExamController::class);
+
 Route::resource('question', QuestionController::class);
 Route::resource('participant', ParticipantController::class);
+
+Route::prefix('exam/{exam}')->as('exam.')->group(function(){
+    Route::resource('subtest', SubtestController::class);
+    Route::prefix('subtest/{subtest}')->as('subtest.')->group(function(){
+        Route::resource('question', ExamQuestionController::class);
+    });
+});
 
 
 Route::middleware('auth')->group(function () {
